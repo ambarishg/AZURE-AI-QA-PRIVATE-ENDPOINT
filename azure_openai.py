@@ -14,6 +14,8 @@ def create_prompt(context,query):
 
 
 def generate_answer(conversation):
+    print(f"Deployment ID: {deployment_id}")
+    print("################################")
     response = client.chat.completions.create(
     model=deployment_id,
     messages=conversation,
@@ -24,6 +26,7 @@ def generate_answer(conversation):
     presence_penalty=0,
     stop = [' END']
     )
+    
     return (response.choices[0].message.content).strip()
 
 def generate_reply_from_context(user_input, content, conversation):
